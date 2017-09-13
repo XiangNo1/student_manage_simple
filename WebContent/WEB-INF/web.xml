@@ -1,0 +1,273 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app version="2.5" 
+	xmlns="http://java.sun.com/xml/ns/javaee" 
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee 
+	http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd">
+  <display-name></display-name>	
+  <welcome-file-list>
+    <welcome-file>index.jsp</welcome-file>
+  </welcome-file-list>
+  
+ <listener>
+ 	<listener-class>com.situ.student.controller.OnlineStudentListListener</listener-class>
+ </listener>
+ <listener>
+ 	<listener-class>com.situ.student.controller.MyHttpSessionListener</listener-class>
+ </listener>
+ 
+ 
+ <filter>
+    <filter-name>EncodingFilter</filter-name>
+    <filter-class> com.situ.student.controller.EncodingFilter</filter-class>
+ </filter>
+ <filter-mapping>
+    <filter-name>EncodingFilter</filter-name>
+    <url-pattern>/*</url-pattern>
+ </filter-mapping>
+ 
+  <filter>
+    <filter-name>LoginFilter</filter-name>
+    <filter-class> com.situ.student.controller.LoginFilter</filter-class>
+ </filter>
+ <filter-mapping>
+    <filter-name>LoginFilter</filter-name>
+    <url-pattern>/*</url-pattern>
+ </filter-mapping>
+  
+  
+  <servlet>
+  	<servlet-name>FindStudentServlet</servlet-name>
+  	<servlet-class>com.situ.student.controller.FindStudentServlet</servlet-class>
+  </servlet>
+  
+  <servlet-mapping>
+  	<servlet-name>FindStudentServlet</servlet-name>
+  	<!-- 网名，以/开头 -->
+  	<url-pattern>/find</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+  	<servlet-name>LogoutServlet</servlet-name>
+  	<servlet-class>com.situ.student.controller.LogoutServlet</servlet-class>
+  </servlet>
+  
+  <servlet-mapping>
+  	<servlet-name>LogoutServlet</servlet-name>
+  	<!-- 网名，以/开头 -->
+  	<url-pattern>/logout</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+  	<servlet-name>Ajax</servlet-name>
+  	<servlet-class>AjaxServlet</servlet-class>
+  </servlet>
+  
+  <servlet-mapping>
+  	<servlet-name>Ajax</servlet-name>
+  	<!-- 网名，以/开头 -->
+  	<url-pattern>/ajax</url-pattern>
+  </servlet-mapping>
+  <servlet>
+  
+  	<servlet-name>Json</servlet-name>
+  	<servlet-class>JsonServlet</servlet-class>
+  </servlet>
+  
+  <servlet-mapping>
+  	<servlet-name>Json</servlet-name>
+  	<!-- 网名，以/开头 -->
+  	<url-pattern>/json</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+  	<servlet-name>CheckImgServlet</servlet-name>
+  	<servlet-class>com.situ.student.controller.CheckImgServlet</servlet-class>
+  </servlet>
+  
+  <servlet-mapping>
+  	<servlet-name>CheckImgServlet</servlet-name>
+  	<!-- 网名，以/开头 -->
+  	<url-pattern>/checkImgServlet</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+  	<servlet-name>FileUploadServlets</servlet-name>
+  	<servlet-class>FileUploadServlet</servlet-class>
+  </servlet>
+  
+  <servlet-mapping>
+  	<servlet-name>FileUploadServlets</servlet-name>
+  	<!-- 网名，以/开头 -->
+  	<url-pattern>/fileUploadServlet</url-pattern>
+  </servlet-mapping>
+  
+  
+  <servlet>
+  	<servlet-name>LoginServlet</servlet-name>
+  	<servlet-class>com.situ.student.controller.LoginServlet</servlet-class>
+  </servlet>
+  
+  <servlet-mapping>
+  	<servlet-name>LoginServlet</servlet-name>
+  	<!-- 网名，以/开头 -->
+  	<url-pattern>/login</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+  	<servlet-name>AddStudentServlet</servlet-name>
+  	<servlet-class>com.situ.student.controller.AddStudentServlet</servlet-class>
+  </servlet>
+  
+  <servlet-mapping>
+  	<servlet-name>AddStudentServlet</servlet-name>
+  	<!-- 网名，以/开头 -->
+  	<url-pattern>/add</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+  	<servlet-name>DeleteStudentServlet</servlet-name>
+  	<servlet-class>com.situ.student.controller.DeleteStudentServlet</servlet-class>
+  </servlet>
+  
+  <servlet-mapping>
+  	<servlet-name>DeleteStudentServlet</servlet-name>
+  	<!-- 网名，以/开头 -->
+  	<url-pattern>/delete</url-pattern>
+  </servlet-mapping>
+  
+  
+  <servlet>
+  	<servlet-name>lifeServlet</servlet-name>
+  	<servlet-class>LifeServlet</servlet-class>
+  </servlet>
+  
+  <servlet-mapping>
+  	<servlet-name>lifeServlet</servlet-name>
+  	<!-- 网名，以/开头 -->
+  	<url-pattern>/life</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+  	<servlet-name>StudentServlet</servlet-name>
+  	<servlet-class>com.situ.student.controller.StudentServlet</servlet-class>
+  </servlet>
+  
+  <servlet-mapping>
+  	<servlet-name>StudentServlet</servlet-name>
+  	<!-- 网名，以/开头 -->
+  	<url-pattern>/student</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+  	<servlet-name>BanjiServlet</servlet-name>
+  	<servlet-class>com.situ.student.controller.BanjiServlet</servlet-class>
+  </servlet>
+  
+  <servlet-mapping>
+  	<servlet-name>BanjiServlet</servlet-name>
+  	<!-- 网名，以/开头 -->
+  	<url-pattern>/banji</url-pattern>
+  </servlet-mapping>
+  
+  
+  <servlet>
+  	<servlet-name>StudentServlet2</servlet-name>
+  	<servlet-class>com.situ.student.controller.StudentServlet2</servlet-class>
+  </servlet>
+  
+  <servlet-mapping>
+  	<servlet-name>StudentServlet2</servlet-name>
+  	<!-- 网名，以/开头 -->
+  	<url-pattern>/studentServlet2</url-pattern>
+  </servlet-mapping>
+  
+  
+  
+  <servlet>
+  	<servlet-name>Thread</servlet-name>
+  	<servlet-class>ThreadServlet</servlet-class>
+  </servlet>
+  
+  <servlet-mapping>
+  	<servlet-name>Thread</servlet-name>
+  	<!-- 网名，以/开头 -->
+  	<url-pattern>/thread</url-pattern>
+  </servlet-mapping>
+  
+  
+  <servlet>
+  
+  <servlet-name>File</servlet-name>
+  	<servlet-class>FileServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>File</servlet-name>
+	<url-pattern>/file</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+  	<servlet-name>Context1</servlet-name>
+  	<servlet-class>Context1Servlet</servlet-class>
+  </servlet>
+  
+  <servlet-mapping>
+  	<servlet-name>Context1</servlet-name>
+  	<!-- 网名，以/开头 -->
+  	<url-pattern>/context1</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+  	<servlet-name>Context2</servlet-name>
+  	<servlet-class>Context2Servlet</servlet-class>
+  </servlet>
+  
+  <servlet-mapping>
+  	<servlet-name>Context2</servlet-name>
+  	<!-- 网名，以/开头 -->
+  	<url-pattern>/context2</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+  	<servlet-name>Cookie</servlet-name>
+  	<servlet-class>CookieServlet</servlet-class>
+  </servlet>
+  
+  <servlet-mapping>
+  	<servlet-name>Cookie</servlet-name>
+  	<!-- 网名，以/开头 -->
+  	<url-pattern>/cookie</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+  	<servlet-name>VisitCookie</servlet-name>
+  	<servlet-class>VisitCookie</servlet-class>
+  </servlet>
+  
+  <servlet-mapping>
+  	<servlet-name>VisitCookie</servlet-name>
+  	<!-- 网名，以/开头 -->
+  	<url-pattern>/visitCookie</url-pattern>
+  </servlet-mapping>
+  
+  
+  <servlet>
+   <servlet-name>InitServlet</servlet-name>
+   <servlet-class>InitServlet</servlet-class>
+   <load-on-startup>1</load-on-startup>
+ </servlet>
+  <servlet-mapping>
+  	<servlet-name>InitServlet</servlet-name>
+  	<url-pattern>/init</url-pattern>
+  </servlet-mapping>
+  
+ <!--  <error-page>
+    <error-code>500</error-code>
+    <location>/jsp/500.jsp</location>
+ </error-page>
+ <error-page>
+    <error-code>404</error-code>
+    <location>/jsp/404.jsp</location>
+ </error-page> -->
+  
+</web-app>

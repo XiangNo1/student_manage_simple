@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="/Java1707Web2/bootstrap.css" />
+<script type="text/javascript" src="/Java1707Web2/jquery-1.11.1.js"></script>
+
+</head>
+<body>
+<div style="width:30%; margin-top:150px;" class="container">
+	<form action="/Java1707Web2/login" method = "post">
+		用户名：<input  class="form-control" placeholder="请输入帐号" type="text" name="name"/><br/>
+		密 码 : <input  class="form-control" placeholder="请输入密码" type="text" name="password"/><br/>
+		验证码：<input class="form-control" type="text" name="checkCode"/>
+		<img id="codeImg" src="/Java1707Web2/checkImgServlet" onclick="refreshCode()"/>
+		
+		<input class="btn btn-primary" type="submit" value="登录"/>
+		<a href="/Java1707Web2/jsp/zhuce.jsp">注册账号</a>
+		<a href="/Java1707Web2/student?method=findAccounts">管理员登录</a>
+	</form>
+</div>
+
+<script type="text/javascript">
+	function refreshCode() {
+		$("#codeImg").attr("src", "/Java1707Web2/checkImgServlet?" + Math.random());
+	}
+
+</script>
+
+</body>
+</html>

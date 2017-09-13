@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="/Java1707Web2/bootstrap.css" />
+</head>
+<body>
+<div style="width:50%; margin-top:150px;" class="container">
+ <form action="/Java1707Web2/student?method=searchStudentServlet" method="post">
+   	    姓名：<input type="text" name="name"/><button class="btn btn-default" type="submit">根据姓名查询</button><br/>
+  	     年龄：<input type="text" name="age"/><button class="btn btn-default" type="submit">根据年龄查询</button><br/>
+	       性别：<input type="text" name="gender"/><button class="btn btn-default" type="submit">根据性别查询</button><br/>
+	       地址：<input type="text" name="address"/><button class="btn btn-default" type="submit">根据地址查询</button><br/>
+	          生日(xxxx-xx-xx)：<input type="text" name="birthday1"/><input type="text" name="birthday2"/><button class="btn btn-default" type="submit">根据年龄段查询</button><br/>
+    </form>
+    </div>
+</body>
+</html>
