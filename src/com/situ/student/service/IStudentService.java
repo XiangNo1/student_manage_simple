@@ -88,4 +88,6 @@ public interface IStudentService {
 	PageBean<Banji> getPageBeanBanji(int pageIndex, int pageSize);
 
 	PageBean<Kecheng> getPageBeanKecheng(int pageIndex, int pageSize);
+
+	PageBean<Banji> getPageBeanJiaowuBanji(int pageIndex, int pageSize);
 }

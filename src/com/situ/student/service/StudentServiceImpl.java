@@ -321,4 +321,21 @@ public class StudentServiceImpl implements IStudentService{
 		return pageBean;
 	}
 
+	@Override
+	public PageBean<Banji> getPageBeanJiaowuBanji(int pageIndex, int pageSize) {
+		PageBean<Banji> pageBean = new PageBean<Banji>();
+		pageBean.setPageIndex(pageIndex);
+		pageBean.setPageSize(pageSize);
+		//总条数
+		int totalCount = studentDao.getJiaowuBanjiTotalCount();
+		pageBean.setTotalCount(totalCount);
+		int totalPage =(int) Math.ceil((double) totalCount / pageSize );
+		pageBean.setTotalPage(totalPage);
+		int index =( pageIndex - 1) * pageSize;
+		List<Banji> list = studentDao.findJiaowuBanjiPageBeanList(index, pageSize);
+		pageBean.setList(list);
+		
+		return pageBean;
+	}
+
 }

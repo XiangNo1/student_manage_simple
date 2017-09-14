@@ -89,5 +89,7 @@ public interface IStudentDao {
 	public List<Banji> findBanjiPageBeanList(int index, int pageSize);
 	public int getKechengTotalCount();
 	public List<Kecheng> findKechengPageBeanList(int index, int pageSize);
+	public int getJiaowuBanjiTotalCount();
+	public List<Banji> findJiaowuBanjiPageBeanList(int index, int pageSize);
 	
 }

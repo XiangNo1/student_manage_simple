@@ -75,13 +75,21 @@ private void searchBanjiKecheng(HttpServletRequest req, HttpServletResponse resp
 
 	private void findJiaowuServlet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException{
 		
-		
-		List<Banji> banji1 = new ArrayList<Banji>();
-		banji1 = studentService.findBanjiKecheng();
-		System.out.println("jiaowuserlvet" + banji1);
-		req.setAttribute("list", banji1);
-		req.getRequestDispatcher("/jsp/jiaowu.jsp").forward(req, resp);
-		//req.getRequestDispatcher("/jsp/jiaowu.jsp").forward(req, resp);
+		 String pageIndexStr = req.getParameter("pageIndex");
+			String pageSizeStr = req.getParameter("pageSize");
+			int pageIndex = 1;
+			if (pageIndexStr!= null && !pageIndexStr.equals("")) {
+				pageIndex = Integer.parseInt(pageIndexStr);
+			}
+			int pageSize = 3;
+			if (pageSizeStr != null && !pageSizeStr.equals("")) {
+				pageSize = Integer.parseInt(pageSizeStr);
+			}
+			IStudentService studentService = new StudentServiceImpl();
+			PageBean<Banji> pageBean = studentService.getPageBeanJiaowuBanji(pageIndex,pageSize);
+			System.out.println(pageBean);
+			req.setAttribute("list", pageBean);
+			req.getRequestDispatcher("/jsp/jiaowu.jsp").forward(req, resp);
 	}
 	
 	private void findBanjiServlet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException{

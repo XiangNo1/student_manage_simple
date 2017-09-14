@@ -1467,6 +1467,64 @@ public class StudentDaoMySqlImpl implements IStudentDao {
 		}
 		return list;
 	}
+	
+	@Override
+	public int getJiaowuBanjiTotalCount() {
+		Connection connection = null;
+		PreparedStatement preparedStatement = null;
+		ResultSet resultSet = null;
+		int result = 0;
+		try {
+			connection = JdbcUtil.getConnection();
+			String sql = "select * from banji;";
+			preparedStatement = connection.prepareStatement(sql);
+			resultSet = preparedStatement.executeQuery();
+			while (resultSet.next()) {
+				result++;
+			}
+			
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			JdbcUtil.close(connection, preparedStatement, resultSet);
+		}
+		return result;
+	}
+
+	@Override
+	public List<Banji> findJiaowuBanjiPageBeanList(int index, int pageSize) {
+		Connection connection = null;
+		PreparedStatement preparedStatement = null;
+		ResultSet resultSet = null;
+		List<Banji> list = new ArrayList<Banji>();
+		try {
+			connection = JdbcUtil.getConnection();
+			String sql = "select * from banji limit ?,?;";
+			preparedStatement = connection.prepareStatement(sql);
+			preparedStatement.setInt(1, index);
+			preparedStatement.setInt(2, pageSize);
+			resultSet = preparedStatement.executeQuery();
+			List<Kecheng> kecheng = new ArrayList<Kecheng>();
+			while (resultSet.next()) {
+				int id = resultSet.getInt("id");
+				String name = resultSet.getString("name");
+				kecheng = findKechengByBanji(id);
+				System.out.println("impl" + kecheng);
+				Banji banji = new Banji(id, name, kecheng);
+				list.add(banji);
+				
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			JdbcUtil.close(connection, preparedStatement, resultSet);
+		}
+		return list;
+	}
+	
 
 }
 
