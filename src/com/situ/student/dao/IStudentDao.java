@@ -85,5 +85,9 @@ public interface IStudentDao {
 	public int deleteBanjiKecheng(String banji_id, String kecheng_id);
 	public int addJiaowu(String banji, String kecheng);
 	public List<Banji> searchBanjiKecheng(String banjiId);
+	public int getBanjiTotalCount();
+	public List<Banji> findBanjiPageBeanList(int index, int pageSize);
+	public int getKechengTotalCount();
+	public List<Kecheng> findKechengPageBeanList(int index, int pageSize);
 	
 }

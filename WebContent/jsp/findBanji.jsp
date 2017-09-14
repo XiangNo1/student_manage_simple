@@ -96,7 +96,7 @@
 		                </thead>
 		                <tbody>
 		                    
-				<c:forEach items="${requestScope.list}" var="banji">
+				<c:forEach items="${requestScope.list.list}" var="banji">
 					<tr>
 						<td>${banji.id}</td>
 						<td>${banji.name }</td>
@@ -106,7 +106,60 @@
 				</c:forEach>
 		                </tbody>
 		            </table>
+		      </div>
+		      </div>
 		      
+		      
+		       <!-- 分页开始 -->
+				<nav aria-label="Page navigation" class="pull-right">
+				 <ul class="pagination">
+			    <c:if test="${list.pageIndex==1}">
+		              <li class="disabled">
+		                 <a href="javascript:void(0);" aria-label="Previous">
+		                   <span aria-hidden="true">&laquo;</span>
+		                 </a>
+		              </li>
+          		 </c:if>
+		           <c:if test="${list.pageIndex!=1}">
+		              <li>
+		                 <a href="${pageContext.request.contextPath}/banji?method=findBanjiServlet&pageIndex=${list.pageIndex-1}" aria-label="Previous">
+		                   <span aria-hidden="true">&laquo;</span>
+		                 </a>
+		              </li>
+		           </c:if>
+
+			   <c:forEach begin="1" end="${list.totalPage}" var="page">
+              <c:if test="${list.pageIndex!=page}">
+                   <li><a href="${pageContext.request.contextPath}/banji?method=findBanjiServlet&pageIndex=${page}">${page}</a></li>
+              </c:if>
+              <!-- 遍历的时候page和pageIndex相等，高亮显示 -->
+              <c:if test="${list.pageIndex==page}">
+                   <li class="active"><a href="javascript:void(0);">${page}</a></li>
+              </c:if>
+           </c:forEach>
+
+			  
+			   
+			 <c:if test="${list.pageIndex == list.totalPage}">
+		              <li class="disabled">
+		                 <a href="javascript:void(0);" aria-label="Previous">
+		                   <span aria-hidden="true">&raquo;</span>
+		                 </a>
+		              </li>
+          		 </c:if>
+		           <c:if test="${list.pageIndex!=list.totalPage}">
+		              <li>
+		                 <a href="${pageContext.request.contextPath}/banji?method=findBanjiServlet&pageIndex=${list.pageIndex+1}" aria-label="Previous">
+		                   <span aria-hidden="true">&raquo;</span>
+		                 </a>
+		              </li>
+		           </c:if>
+			 
+			 
+			 
+			  </ul>
+				</nav>
+				<!-- 分页结束 -->
 		
 	<script>
 	

@@ -1360,6 +1360,114 @@ public class StudentDaoMySqlImpl implements IStudentDao {
 		return list;
 	}
 
+	@Override
+	public int getBanjiTotalCount() {
+		Connection connection = null;
+		PreparedStatement preparedStatement = null;
+		ResultSet resultSet = null;
+		int result = 0;
+		try {
+			connection = JdbcUtil.getConnection();
+			String sql = "select * from banji;";
+			preparedStatement = connection.prepareStatement(sql);
+			resultSet = preparedStatement.executeQuery();
+			while (resultSet.next()) {
+				result++;
+			}
+			
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			JdbcUtil.close(connection, preparedStatement, resultSet);
+		}
+		return result;
+	}
+
+	@Override
+	public List<Banji> findBanjiPageBeanList(int index, int pageSize) {
+		Connection connection = null;
+		PreparedStatement preparedStatement = null;
+		ResultSet resultSet = null;
+		List<Banji> list =new ArrayList<Banji>();
+		try {
+			connection = JdbcUtil.getConnection();
+			String sql = "select * from banji limit ?,?;";
+			preparedStatement = connection.prepareStatement(sql);
+			preparedStatement.setInt(1, index);
+			preparedStatement.setInt(2, pageSize);
+			resultSet = preparedStatement.executeQuery();
+			while (resultSet.next()) {
+				 int id = resultSet.getInt("id");
+		           String name = resultSet.getString("name");
+		           Banji banji = new Banji(id, name);
+		           list.add(banji);
+
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			JdbcUtil.close(connection, preparedStatement, resultSet);
+		}
+		return list;
+	}
+	
+	@Override
+	public int getKechengTotalCount() {
+		Connection connection = null;
+		PreparedStatement preparedStatement = null;
+		ResultSet resultSet = null;
+		int result = 0;
+		try {
+			connection = JdbcUtil.getConnection();
+			String sql = "select * from kecheng;";
+			preparedStatement = connection.prepareStatement(sql);
+			resultSet = preparedStatement.executeQuery();
+			while (resultSet.next()) {
+				result++;
+			}
+			
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			JdbcUtil.close(connection, preparedStatement, resultSet);
+		}
+		return result;
+	}
+
+	@Override
+	public List<Kecheng> findKechengPageBeanList(int index, int pageSize) {
+		Connection connection = null;
+		PreparedStatement preparedStatement = null;
+		ResultSet resultSet = null;
+		List<Kecheng> list =new ArrayList<Kecheng>();
+		try {
+			connection = JdbcUtil.getConnection();
+			String sql = "select * from kecheng limit ?,?;";
+			preparedStatement = connection.prepareStatement(sql);
+			preparedStatement.setInt(1, index);
+			preparedStatement.setInt(2, pageSize);
+			resultSet = preparedStatement.executeQuery();
+			while (resultSet.next()) {
+				 int id = resultSet.getInt("id");
+		           String name = resultSet.getString("name");
+		           Kecheng kecheng = new Kecheng(id, name);
+		           list.add(kecheng);
+
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			JdbcUtil.close(connection, preparedStatement, resultSet);
+		}
+		return list;
+	}
+
 }
 
 

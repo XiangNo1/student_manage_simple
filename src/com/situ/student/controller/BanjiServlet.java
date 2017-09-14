@@ -11,6 +11,7 @@ import javax.servlet.http.HttpSession;
 
 import com.situ.student.pojo.Banji;
 import com.situ.student.pojo.Kecheng;
+import com.situ.student.pojo.PageBean;
 import com.situ.student.service.IStudentService;
 import com.situ.student.service.StudentServiceImpl;
 
@@ -84,9 +85,21 @@ private void searchBanjiKecheng(HttpServletRequest req, HttpServletResponse resp
 	}
 	
 	private void findBanjiServlet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException{
-		List<Banji> list = studentService.findBanji();
-		req.setAttribute("list", list);
-		req.getRequestDispatcher("/jsp/findBanji.jsp").forward(req, resp);
+		 String pageIndexStr = req.getParameter("pageIndex");
+			String pageSizeStr = req.getParameter("pageSize");
+			int pageIndex = 1;
+			if (pageIndexStr!= null && !pageIndexStr.equals("")) {
+				pageIndex = Integer.parseInt(pageIndexStr);
+			}
+			int pageSize = 3;
+			if (pageSizeStr != null && !pageSizeStr.equals("")) {
+				pageSize = Integer.parseInt(pageSizeStr);
+			}
+			IStudentService studentService = new StudentServiceImpl();
+			PageBean<Banji> pageBean = studentService.getPageBeanBanji(pageIndex,pageSize);
+			System.out.println(pageBean);
+			req.setAttribute("list", pageBean);
+			req.getRequestDispatcher("/jsp/findBanji.jsp").forward(req, resp);
 	}
 	
 	private void addBanjiServlet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException{
@@ -132,9 +145,21 @@ private void searchBanjiKecheng(HttpServletRequest req, HttpServletResponse resp
 	
 	
 	private void findKechengServlet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException{
-		List<Kecheng> list = studentService.findKecheng();
-		req.setAttribute("list", list);
-		req.getRequestDispatcher("/jsp/findKecheng.jsp").forward(req, resp);
+		 String pageIndexStr = req.getParameter("pageIndex");
+			String pageSizeStr = req.getParameter("pageSize");
+			int pageIndex = 1;
+			if (pageIndexStr!= null && !pageIndexStr.equals("")) {
+				pageIndex = Integer.parseInt(pageIndexStr);
+			}
+			int pageSize = 3;
+			if (pageSizeStr != null && !pageSizeStr.equals("")) {
+				pageSize = Integer.parseInt(pageSizeStr);
+			}
+			IStudentService studentService = new StudentServiceImpl();
+			PageBean<Kecheng> pageBean = studentService.getPageBeanKecheng(pageIndex,pageSize);
+			System.out.println(pageBean);
+			req.setAttribute("list", pageBean);
+			req.getRequestDispatcher("/jsp/findKecheng.jsp").forward(req, resp);
 	}
 	
 	private void addKechengServlet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException{

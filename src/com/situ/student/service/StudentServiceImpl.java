@@ -287,4 +287,38 @@ public class StudentServiceImpl implements IStudentService{
 		return studentDao.searchBanjiKecheng(banjiId);
 	}
 
+	@Override
+	public PageBean<Banji> getPageBeanBanji(int pageIndex, int pageSize) {
+		PageBean<Banji> pageBean = new PageBean<Banji>();
+		pageBean.setPageIndex(pageIndex);
+		pageBean.setPageSize(pageSize);
+		//总条数
+		int totalCount = studentDao.getBanjiTotalCount();
+		pageBean.setTotalCount(totalCount);
+		int totalPage =(int) Math.ceil((double) totalCount / pageSize );
+		pageBean.setTotalPage(totalPage);
+		int index =( pageIndex - 1) * pageSize;
+		List<Banji> list = studentDao.findBanjiPageBeanList(index, pageSize);
+		pageBean.setList(list);
+		
+		return pageBean;
+	}
+
+	@Override
+	public PageBean<Kecheng> getPageBeanKecheng(int pageIndex, int pageSize) {
+		PageBean<Kecheng> pageBean = new PageBean<Kecheng>();
+		pageBean.setPageIndex(pageIndex);
+		pageBean.setPageSize(pageSize);
+		//总条数
+		int totalCount = studentDao.getKechengTotalCount();
+		pageBean.setTotalCount(totalCount);
+		int totalPage =(int) Math.ceil((double) totalCount / pageSize );
+		pageBean.setTotalPage(totalPage);
+		int index =( pageIndex - 1) * pageSize;
+		List<Kecheng> list = studentDao.findKechengPageBeanList(index, pageSize);
+		pageBean.setList(list);
+		
+		return pageBean;
+	}
+
 }

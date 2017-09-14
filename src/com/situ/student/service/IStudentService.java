@@ -84,4 +84,8 @@ public interface IStudentService {
 	int addJiaowu(String banji, String kecheng);
 
 	List<Banji> searchBanjiKecheng(String banjiId);
+
+	PageBean<Banji> getPageBeanBanji(int pageIndex, int pageSize);
+
+	PageBean<Kecheng> getPageBeanKecheng(int pageIndex, int pageSize);
 }
